@@ -1,16 +1,18 @@
-# network-policy.yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: dotnet-egress
+  name: allow-ingress-dotnet
   namespace: aks
 spec:
   podSelector:
     matchLabels:
-      app: dotnet-app
-  policyTypes:
-    - Egress
+      app: dotnet
+  ingress:
+  - ports:
+    - protocol: TCP
+      port: 5000
   egress:
-    - to:
-        - ipBlock:
-            cidr: 0.0.0.0/0 # Allow all egress traffic, update CIDR based on your requirements
+  - ports:
+    - protocol: TCP
+      port: 5000
+    
