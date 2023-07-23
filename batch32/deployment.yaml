@@ -20,16 +20,16 @@ spec:
       labels:
         app: dotnet
     spec:
-     affinity:
-    nodeAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution:
-      - weight: 1
-        preference:
-          matchExpressions:
-          - key: disktype
-            operator: In
-            values:
-            - ssd 
+      affinity:   # Correctly place nodeAffinity under spec.template.spec
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: disktype
+                operator: In
+                values:
+                - ssd
       containers:
       - name: dotnet
         image: aksss.azurecr.io/acrimage:1.0.0
@@ -47,5 +47,5 @@ spec:
             port: 5000
           initialDelaySeconds: 30
           periodSeconds: 10
-      imagePullSecrets:   # Add the imagePullSecrets section
+      imagePullSecrets:
         - name: sha
