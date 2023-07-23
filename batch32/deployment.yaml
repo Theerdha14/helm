@@ -20,6 +20,16 @@ spec:
       labels:
         app: dotnet
     spec:
+     affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: disktype
+            operator: In
+            values:
+            - ssd 
       containers:
       - name: dotnet
         image: aksss.azurecr.io/acrimage:1.0.0
