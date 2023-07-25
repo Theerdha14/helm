@@ -7,7 +7,7 @@ spec:
   containers:
   - name: my-container
     image: aksss.azurecr.io/acrimage:1.0.0
-  tolerations:
+   toleration
   - key: "special"
     operator: "Equal"
     value: "true"
