@@ -32,7 +32,7 @@ spec:
                 - ssd
       containers:
       - name: dotnet
-        image: aksss.azurecr.io/acrimage:1.0.0
+        image: nshalini01/dockcompose-app:latest
         ports:
         - containerPort: 5000
         readinessProbe:

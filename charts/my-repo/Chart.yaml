@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: dotnet-app
-        image: aksss.azurecr.io/acrimage:1.0.0
+        image: nshalini01/dockcompose-app:latest
         ports:
         - containerPort: 80
