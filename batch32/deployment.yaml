@@ -41,7 +41,7 @@ spec:
             topologyKey: "kubernetes.io/hostname"
       containers:
       - name: dotnet
-        image: nshalini01/dockcompose-app:latest
+        image: helmcontainer.azurecr.io/dockerr:latest
         ports:
         - containerPort: 5000
         readinessProbe:
@@ -56,5 +56,4 @@ spec:
             port: 5000
           initialDelaySeconds: 30
           periodSeconds: 10
-      imagePullSecrets:
-        - name: sha
+      
