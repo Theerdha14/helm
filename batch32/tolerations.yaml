@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
   - name: my-container
-    image: threedha14/dockercompose-app:latest
+    image: theerdha14/dockercompose-app:latest
   tolerations:
   - key: "special"
     operator: "Equal"
