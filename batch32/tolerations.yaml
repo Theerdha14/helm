@@ -2,11 +2,11 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: my-pod
-  namespace: aks
+  namespace: helm
 spec:
   containers:
   - name: my-container
-    image: aksss.azurecr.io/acrimage:1.0.0
+    image: helmcontainer.azurecr.io/dockerr:latest
   tolerations:
   - key: "special"
     operator: "Equal"
