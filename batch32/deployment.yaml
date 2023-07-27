@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dotnet
-  namespace: aks
+  namespace: helm
   labels:
     app: dotnet
 spec:
@@ -20,7 +20,7 @@ spec:
       labels:
         app: dotnet
     spec:
-      affinity:   # Correctly place nodeAffinity under spec.template.spec
+      affinity:
         nodeAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 1
@@ -30,6 +30,15 @@ spec:
                 operator: In
                 values:
                 - ssd
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - dotnet
+            topologyKey: "kubernetes.io/hostname"
       containers:
       - name: dotnet
         image: nshalini01/dockcompose-app:latest
